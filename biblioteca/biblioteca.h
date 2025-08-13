@@ -27,6 +27,7 @@ void buscar_livro_codigo(livro lista_livros[], int codigo_busca, int total_livro
 void buscar_livro_titulo(livro lista_livros[], char titulo_busca[], int total_livros_cadastrados);
 void buscar_livro_autor(livro lista_livros[], char autor_busca[], int total_livros_cadastrados);
 void buscar_livro_ano(livro lista_livros[], int ano_busca, int total_livros_cadastrados);
+void editar_livro(char nome_arquivo_livro[], livro lista_livros[], int total_livros_cadastrados);
 void encerrar_sistema();
 
 #endif

@@ -9,6 +9,7 @@ int main() {
     do {
         opcao_menu_escolhida = menu();
         switch(opcao_menu_escolhida) {
+
         case 1:
         total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
         cadastrar_livro(nome_arquivo_livros, lista_livros, total_livros);
@@ -23,10 +24,14 @@ int main() {
         buscar_livro(lista_livros, total_livros);
         break;
 
-        case 9:
+        case 4:
+        editar_livro(nome_arquivo_livros, lista_livros, total_livros);
+        break;
+
+        case 14:
         encerrar_sistema();
         break;
     }
-    } while(opcao_menu_escolhida != 9);
+    } while(opcao_menu_escolhida != 14);
     return 0;
 }

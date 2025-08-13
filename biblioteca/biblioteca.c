@@ -6,16 +6,21 @@ int menu() {
     printf("1. Cadastrar livro\n");
     printf("2. Listar livros\n");
     printf("3. Buscar livro\n");
-    printf("4. Cadastrar usuario\n");
-    printf("5. Listar usuarios\n");
-    printf("6. Realizar emprestimo\n");
-    printf("7. Realizar devolucao\n");
-    printf("8. Relatorios\n");
-    printf("9. Encerrar\n");
+    printf("4. Editar livro\n");
+    printf("5. Excluir livro\n");
+    printf("6. Cadastrar usuario\n");
+    printf("7. Listar usuarios\n");
+    printf("8. Buscar usuario\n");
+    printf("9. Editar usuario\n");
+    printf("10. Excluir usuario\n");
+    printf("11. Realizar emprestimo\n");
+    printf("12. Realizar devolucao\n");
+    printf("13. Relatorios\n");
+    printf("14. Encerrar\n");
     printf("-----\n");
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao_escolhida);
-    if (opcao_escolhida >= 1 && opcao_escolhida <= 9) {
+    if (opcao_escolhida >= 1 && opcao_escolhida <= 14) {
         return opcao_escolhida;
     } else {
         printf("Opcao escolhida nao existe\n");
@@ -187,6 +192,80 @@ void buscar_livro_ano(livro lista_livros[], int ano_busca, int total_livros_cada
         if (ano_busca == lista_livros[i].ano) {
             printf("%d; %s; %s; %d; %d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
         }
+    }
+}
+
+void editar_livro(char nome_arquivo_livro[], livro lista_livros[], int total_livros_cadastrados) {
+    char titulo_livro_para_editar[50];
+    int opc_escolhida;
+    char titulo_edicao[50];
+    char autor_edicao[50];
+    int ano_edicao;
+    int exemplares_edicao;
+    FILE *arquivo_livro;
+    arquivo_livro = fopen(nome_arquivo_livro, "r");
+    if (arquivo_livro == NULL) {
+        return;
+    }
+    printf("Qual o titulo do livro que deseja editar: ");
+    scanf(" %49[^\n]", titulo_livro_para_editar);
+    int livro_encontrado_para_editar = 0;
+    int identificador_livro;
+    for (int i = 0; i < total_livros_cadastrados && livro_encontrado_para_editar == 0; i++) {
+        if (strcmp(titulo_livro_para_editar, lista_livros[i].titulo) == 0) {
+            identificador_livro = i;
+            livro_encontrado_para_editar = 1;
+        }
+    }
+    if (livro_encontrado_para_editar == 1) {
+        printf("===== EDITAR LIVRO '%s' =====\n", lista_livros[identificador_livro].titulo);
+        printf("1. Editar titulo\n");
+        printf("2. Editar autor\n");
+        printf("3. Editar ano\n");
+        printf("4. Editar numero de exemplares\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opc_escolhida);
+    } else {
+        printf("O livro '%s' nao foi encontrado\n", titulo_livro_para_editar);
+        return;
+    }
+
+    //
+    if ((opc_escolhida >= 1) && (opc_escolhida <= 4)) {
+        switch(opc_escolhida) {
+            case 1:
+            printf("Titulo (Modificar): ");
+            scanf(" %49[^\n]", titulo_edicao);
+            strcpy(lista_livros[identificador_livro].titulo, titulo_edicao);
+            break;
+
+            case 2:
+            printf("Autor (Modificar): ");
+            scanf(" %49[^\n]", autor_edicao);
+            strcpy(lista_livros[identificador_livro].autor, autor_edicao);
+            break;
+
+            case 3:
+            printf("Ano (Modificar): ");
+            scanf("%d", &ano_edicao);
+            lista_livros[identificador_livro].ano = ano_edicao;
+            break;
+
+            case 4:
+            printf("Exemplares (Modificar): ");
+            scanf("%d", &exemplares_edicao);
+            lista_livros[identificador_livro].exemplares = exemplares_edicao;
+            break;
+        }
+        fclose(arquivo_livro);
+        arquivo_livro = fopen(nome_arquivo_livro, "w");
+        if (arquivo_livro == NULL) {
+            return;
+        }
+        for (int i = 0; i < total_livros_cadastrados; i++) {
+            fprintf(arquivo_livro, "%d;%s;%s;%d;%d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
+        }
+        fclose(arquivo_livro);
     }
 }
 
