@@ -1,0 +1,50 @@
+1;O Alquimista;Paulo Coelho;1988;5
+2;1984;George Orwell;1949;3
+3;Dom Quixote;Miguel de Cervantes;1605;4
+4;O Pequeno Príncipe;Antoine de Saint-Exupéry;1943;6
+5;Cem Anos de Solidão;Gabriel García Márquez;1967;2
+6;Moby Dick;Herman Melville;1851;3
+7;O Senhor dos Anéis;J.R.R. Tolkien;1954;7
+8;O Hobbit;J.R.R. Tolkien;1937;5
+9;Orgulho e Preconceito;Jane Austen;1813;4
+10;A Revolução dos Bichos;George Orwell;1945;3
+11;O Código Da Vinci;Dan Brown;2003;6
+12;Harry Potter e a Pedra Filosofal;J.K. Rowling;1997;8
+13;Harry Potter e a Câmara Secreta;J.K. Rowling;1998;7
+14;Harry Potter e o Prisioneiro de Azkaban;J.K. Rowling;1999;6
+15;Harry Potter e o Cálice de Fogo;J.K. Rowling;2000;5
+16;Harry Potter e a Ordem da Fênix;J.K. Rowling;2003;6
+17;Harry Potter e o Enigma do Príncipe;J.K. Rowling;2005;4
+18;Harry Potter e as Relíquias da Morte;J.K. Rowling;2007;5
+19;O Guia do Mochileiro das Galáxias;Douglas Adams;1979;3
+20;A Menina que Roubava Livros;Markus Zusak;2005;6
+21;Jogos Vorazes;Suzanne Collins;2008;7
+22;Em Chamas;Suzanne Collins;2009;6
+23;A Esperança;Suzanne Collins;2010;5
+24;Percy Jackson e o Ladrão de Raios;Rick Riordan;2005;8
+25;Percy Jackson e o Mar de Monstros;Rick Riordan;2006;7
+26;Percy Jackson e a Maldição do Titã;Rick Riordan;2007;6
+27;Percy Jackson e a Batalha do Labirinto;Rick Riordan;2008;5
+28;Percy Jackson e o Último Olimpiano;Rick Riordan;2009;6
+29;O Iluminado;Stephen King;1977;4
+30;It - A Coisa;Stephen King;1986;5
+31;Carrie;Stephen King;1974;3
+32;A História Sem Fim;Michael Ende;1979;4
+33;A Cabana;William P. Young;2007;6
+34;O Morro dos Ventos Uivantes;Emily Brontë;1847;3
+35;Jane Eyre;Charlotte Brontë;1847;4
+36;Drácula;Bram Stoker;1897;3
+37;Frankenstein;Mary Shelley;1818;2
+38;O Nome da Rosa;Umberto Eco;1980;5
+39;O Perfume;Patrick Süskind;1985;4
+40;O Velho e o Mar;Ernest Hemingway;1952;3
+41;A Metamorfose;Franz Kafka;1915;2
+42;O Processo;Franz Kafka;1925;3
+43;A Insustentável Leveza do Ser;Milan Kundera;1984;4
+44;O Lobo da Estepe;Hermann Hesse;1927;3
+45;Demian;Hermann Hesse;1919;2
+46;Sidarta;Hermann Hesse;1922;3
+47;O Apanhador no Campo de Centeio;J.D. Salinger;1951;4
+48;O Sol é Para Todos;Harper Lee;1960;5
+49;A Revolta de Atlas;Ayn Rand;1957;4
+50;Fahrenheit 451;Ray Bradbury;1953;3
