@@ -31,6 +31,13 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
     }
     printf("Quantos livros deseja cadastrar: ");
     scanf("%d", &total_livros_a_cadastrar);
+    if (total_livros_a_cadastrar + total_livros_cadastrados >= 100) {
+        printf("Voce atingiu o limite de cadastro de livros\n");
+        printf("Limite de livros cadastrados: %d\n", MAX_LIVROS);
+        printf("Ao tentar cadastrar %d livros, o total sera de %d livros\n", total_livros_a_cadastrar, total_livros_a_cadastrar + total_livros_cadastrados);
+        printf("Tente cadastrar ate %d livros\n", MAX_LIVROS - total_livros_cadastrados);
+        return;
+    }
     if (total_livros_a_cadastrar <= 0) {
         printf("Cadastro encerrado\n");
         return;
