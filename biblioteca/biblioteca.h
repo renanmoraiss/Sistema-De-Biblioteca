@@ -17,7 +17,6 @@ struct Livro {
 
 typedef struct Livro livro;
 
-int menu();
 int carregar_livros(char nome_arquivo_livros[], livro lista_livros[]);
 void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados);
 int verificar_livro_existente(char titulo_livro_digitado[], livro lista_livros[], int total_livros_cadastrados);
@@ -29,6 +28,5 @@ void buscar_livro_autor(livro lista_livros[], char autor_busca[], int total_livr
 void buscar_livro_ano(livro lista_livros[], int ano_busca, int total_livros_cadastrados);
 void editar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados);
 void excluir_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados);
-void encerrar_sistema();
 
 #endif

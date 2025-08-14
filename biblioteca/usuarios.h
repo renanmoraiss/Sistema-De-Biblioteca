@@ -1,5 +1,5 @@
-#ifndef USUARIOS.H
-#define USUARIOS.H
+#ifndef USUARIOS_H
+#define USUARIOS_H
 
 #include <stdio.h>
 #include <string.h>
