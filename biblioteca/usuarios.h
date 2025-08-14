@@ -16,4 +16,7 @@ struct Usuario {
 
 typedef struct Usuario usuario;
 
+int carregar_usuarios(char nome_arquivo_usuarios[], usuario lista_usuarios[]);
+void cadastrar_usuario(char nome_arquivo_usuarios[], usuario lista_usuarios[], int total_usuarios_cadastrados);
+
 #endif
