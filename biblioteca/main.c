@@ -11,7 +11,6 @@ int main() {
         switch(opcao_menu_escolhida) {
 
         case 1:
-        total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
         cadastrar_livro(nome_arquivo_livros, lista_livros, total_livros);
         total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
         break;
@@ -30,6 +29,7 @@ int main() {
 
         case 5:
         excluir_livro(nome_arquivo_livros, lista_livros, total_livros);
+        total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
         break;
 
         case 14:
