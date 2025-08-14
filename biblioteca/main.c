@@ -28,6 +28,10 @@ int main() {
         editar_livro(nome_arquivo_livros, lista_livros, total_livros);
         break;
 
+        case 5:
+        excluir_livro(nome_arquivo_livros, lista_livros, total_livros);
+        break;
+
         case 14:
         encerrar_sistema();
         break;

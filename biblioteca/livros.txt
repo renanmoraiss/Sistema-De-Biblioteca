@@ -1,5 +1,4 @@
 0;O Alquimista;Paulo Coelho;1988;3
-1;Dom Cirrose;Renan Morais;2007;18
 2;1984;George Orwell;1949;4
 3;O Pequeno Príncipe;Antoine de Saint-Exupéry;1943;5
 4;A Revolução dos Bichos;George Orwell;1945;4

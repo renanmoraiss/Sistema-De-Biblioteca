@@ -195,7 +195,7 @@ void buscar_livro_ano(livro lista_livros[], int ano_busca, int total_livros_cada
     }
 }
 
-void editar_livro(char nome_arquivo_livro[], livro lista_livros[], int total_livros_cadastrados) {
+void editar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados) {
     char titulo_livro_para_editar[50];
     int opc_escolhida;
     char titulo_edicao[50];
@@ -203,7 +203,7 @@ void editar_livro(char nome_arquivo_livro[], livro lista_livros[], int total_liv
     int ano_edicao;
     int exemplares_edicao;
     FILE *arquivo_livro;
-    arquivo_livro = fopen(nome_arquivo_livro, "r");
+    arquivo_livro = fopen(nome_arquivo_livros, "r");
     if (arquivo_livro == NULL) {
         return;
     }
@@ -258,7 +258,7 @@ void editar_livro(char nome_arquivo_livro[], livro lista_livros[], int total_liv
             break;
         }
         fclose(arquivo_livro);
-        arquivo_livro = fopen(nome_arquivo_livro, "w");
+        arquivo_livro = fopen(nome_arquivo_livros, "w");
         if (arquivo_livro == NULL) {
             return;
         }
@@ -272,4 +272,64 @@ void editar_livro(char nome_arquivo_livro[], livro lista_livros[], int total_liv
 void encerrar_sistema() {
     printf("Sistema encerrado\n");
     return;
+}
+
+void excluir_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados) {
+    FILE *arquivo_livro;
+    FILE *arquivo_livro_temp;
+    char nome_arquivo_livros_temp[30] = "livrostemp.txt";
+    char titulo_livro_exclusao[50];
+    int livro_encontrado = 0;
+    int indice_livro_excluir = 0;
+    arquivo_livro = fopen(nome_arquivo_livros, "r");
+    if (arquivo_livro == NULL) {
+        return;
+    }
+    printf("Qual o titulo do livro que deseja excluir: ");
+    scanf(" %49[^\n]", titulo_livro_exclusao);
+    for (int i = 0; i < total_livros_cadastrados; i++) {
+        if (strcmp(titulo_livro_exclusao, lista_livros[i].titulo) == 0) {
+            indice_livro_excluir = i;
+            livro_encontrado = 1;
+        }
+    }
+    if (livro_encontrado == 1) {
+        arquivo_livro_temp = fopen(nome_arquivo_livros_temp, "w");
+        if (arquivo_livro_temp == NULL) {
+            return;
+        }
+        for (int i = 0; i < total_livros_cadastrados; i++) {
+            if (i != indice_livro_excluir) {
+                fprintf(arquivo_livro_temp, "%d;%s;%s;%d;%d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
+            } else if (i == indice_livro_excluir) {
+                continue;
+            }
+        }
+        fclose(arquivo_livro);
+        fclose(arquivo_livro_temp);
+        
+        arquivo_livro = fopen(nome_arquivo_livros, "w");
+        if (arquivo_livro == NULL) {
+            return;
+        }
+        arquivo_livro_temp = fopen(nome_arquivo_livros_temp, "r");
+        if (arquivo_livro_temp == NULL) {
+            return;
+        }
+
+        int i = 0;
+        while (fscanf(arquivo_livro_temp, "%d;%49[^;];%49[^;];%d;%d\n", &lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, &lista_livros[i].ano, &lista_livros[i].exemplares) == 5) {
+            fprintf(arquivo_livro, "%d;%s;%s;%d;%d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
+            i++;
+        }
+
+        fclose(arquivo_livro);
+        fclose(arquivo_livro_temp);
+        remove(nome_arquivo_livros_temp);
+
+    } else {
+        fclose(arquivo_livro);
+        printf("O livro '%s' nao foi encontrado\n", titulo_livro_exclusao);
+        return;
+    }
 }
