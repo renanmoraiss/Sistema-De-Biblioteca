@@ -1,4 +1,5 @@
 #include "biblioteca.h"
+#include "usuarios.h"
 
 int main() {
     livro lista_livros[MAX_LIVROS];
