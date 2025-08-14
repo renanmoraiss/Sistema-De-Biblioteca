@@ -63,10 +63,14 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
         printf("Cadastro encerrado\n");
         return;
     }
+    int contagem_de_livros_para_cadastrar = 0;
     int indice_livro_encontrado;
-    int livro_duplicado = 0;
     int livro_cadastrado = 0;
-    for (int i = total_livros_cadastrados; i < total_livros_cadastrados + total_livros_a_cadastrar; i++) {
+    int alerta_problema_livro_repetido = 0;
+    for (int i = total_livros_cadastrados; i < total_livros_cadastrados + total_livros_a_cadastrar && contagem_de_livros_para_cadastrar < total_livros_a_cadastrar; i++) {
+        if (alerta_problema_livro_repetido == 1) {
+            printf("!!! TENTE NOVAMENTE !!!\n");
+        }
         printf("Titulo: ");
         scanf(" %49[^\n]", lista_livros[i].titulo);
         if (total_livros_cadastrados > 0) {
@@ -75,10 +79,12 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
             if (indice_livro_encontrado >= 0) {
                 printf("===== PROBLEMA AO CADASTRAR LIVRO =====\n");
                 printf("O livro '%s' ja esta cadastrado com %d exemplares\n", lista_livros[indice_livro_encontrado].titulo, lista_livros[indice_livro_encontrado].exemplares);
-                livro_duplicado++;
+                alerta_problema_livro_repetido = 1;
                 continue;
+            } else {
+                contagem_de_livros_para_cadastrar++;
             }
-        }
+        }        
 
         printf("Codigo: ");
         scanf("%d", &lista_livros[i].codigo);
@@ -98,8 +104,10 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
     //
     fclose(arquivo_livro);
     //
-    if ((livro_cadastrado == total_livros_a_cadastrar) && (livro_duplicado == 0)) {
-        printf("Livro(s) cadastrado(s) com sucesso\n");
+    if (contagem_de_livros_para_cadastrar == 0) {
+        printf("Nenhum livro cadastrado\n");
+    } else if (contagem_de_livros_para_cadastrar > 0) {
+        printf("%d livro(s) cadastrado(s)\n", contagem_de_livros_para_cadastrar);
     }
 }
 
