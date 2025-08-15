@@ -44,7 +44,6 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
     }
     int contagem_de_livros_para_cadastrar = 0;
     int indice_livro_encontrado;
-    int livro_cadastrado = 0;
     int alerta_problema_livro_repetido = 0;
     for (int i = total_livros_cadastrados; i < total_livros_cadastrados + total_livros_a_cadastrar && contagem_de_livros_para_cadastrar < total_livros_a_cadastrar; i++) {
         if (alerta_problema_livro_repetido == 1) {
@@ -78,7 +77,6 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
         scanf("%d", &lista_livros[i].exemplares);
 
         fprintf(arquivo_livro, "%d;%s;%s;%d;%d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
-        livro_cadastrado++;
     }
     //
     fclose(arquivo_livro);
