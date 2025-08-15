@@ -1,45 +1,45 @@
 #include <stdio.h>
-#include "biblioteca.h"
+#include "library.h"
 #include "menu.h"
 
 int main() {
-    livro lista_livros[MAX_LIVROS];
-    int total_livros;
-    int opcao_menu_escolhida;
-    char nome_arquivo_livros[30] = "livros.txt";
+    book list_books[MAX_BOOKS];
+    int total_books;
+    int chosen_menu_option;
+    char file_name_books[30] = "books.txt";
 
-    total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
+    total_books = load_books(file_name_books, list_books);
 
     do {
-        opcao_menu_escolhida = menu();
-        switch(opcao_menu_escolhida) {
+        chosen_menu_option = menu();
+        switch(chosen_menu_option) {
             case 1:
-            cadastrar_livro(nome_arquivo_livros, lista_livros, total_livros);
-            total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
+            register_book(file_name_books, list_books, total_books);
+            total_books = load_books(file_name_books, list_books);
             break;
             
             case 2:
-            listar_livros(lista_livros, total_livros);
+            show_books(list_books, total_books);
             break;
             
             case 3:
-            buscar_livro(lista_livros, total_livros);
+            search_book(list_books, total_books);
             break;
             
             case 4:
-            editar_livro(nome_arquivo_livros, lista_livros, total_livros);
+            edit_book(file_name_books, list_books, total_books);
             break;
             
             case 5:
-            excluir_livro(nome_arquivo_livros, lista_livros, total_livros);
-            total_livros = carregar_livros(nome_arquivo_livros, lista_livros);
+            delete_book(file_name_books, list_books, total_books);
+            total_books = load_books(file_name_books, list_books);
             break;
             
             case 6:
-            encerrar_sistema();
+            close_system();
             break;
         }
-    } while(opcao_menu_escolhida != 6);
+    } while(chosen_menu_option != 6);
 
     return 0;
 }

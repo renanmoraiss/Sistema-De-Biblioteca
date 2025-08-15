@@ -4,6 +4,6 @@
 #include <stdio.h>
 
 int menu();
-void encerrar_sistema();
+void close_system();
 
 #endif

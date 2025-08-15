@@ -1,7 +1,7 @@
 #include "menu.h"
 
 int menu() {
-    int opcao_escolhida;
+    int chosen_option;
     printf("===== SISTEMA DE BIBLIOTECA =====\n");
     printf("1. Cadastrar livro\n");
     printf("2. Listar livros\n");
@@ -11,16 +11,16 @@ int menu() {
     printf("6. Encerrar sistema\n");
     printf("-----\n");
     printf("Escolha uma opcao: ");
-    scanf("%d", &opcao_escolhida);
-    if (opcao_escolhida >= 1 && opcao_escolhida <= 6) {
-        return opcao_escolhida;
+    scanf("%d", &chosen_option);
+    if (chosen_option >= 1 && chosen_option <= 6) {
+        return chosen_option;
     } else {
-        printf("A opcao '%d' nao existe!\n", opcao_escolhida);
+        printf("A opcao '%d' nao existe!\n", chosen_option);
         return -1;
     }
 }
 
-void encerrar_sistema() {
+void close_system() {
     printf("Sistema encerrado!\n");
     return;
 }
