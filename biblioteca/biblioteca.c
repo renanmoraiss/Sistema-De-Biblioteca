@@ -281,8 +281,6 @@ void excluir_livro(char nome_arquivo_livros[], livro lista_livros[], int total_l
         for (int i = 0; i < total_livros_cadastrados; i++) {
             if (i != indice_livro_excluir) {
                 fprintf(arquivo_livro_temp, "%d;%s;%s;%d;%d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
-            } else if (i == indice_livro_excluir) {
-                continue;
             }
         }
         fclose(arquivo_livro);
