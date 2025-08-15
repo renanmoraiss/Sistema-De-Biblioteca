@@ -19,7 +19,6 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
     int total_livros_a_cadastrar;
     arquivo_livro = fopen(nome_arquivo_livros, "a");
     if (arquivo_livro == NULL) {
-        printf("Erro ao cadastrar livro\n");
         return;
     }
     if (total_livros_cadastrados >= 2) {
@@ -33,7 +32,6 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
     scanf("%d", &total_livros_a_cadastrar);
     if (total_livros_a_cadastrar + total_livros_cadastrados >= 100) {
         printf("Voce atingiu o limite de cadastro de livros\n");
-        printf("Limite de livros cadastrados: %d\n", MAX_LIVROS);
         printf("Ao tentar cadastrar %d livros, o total sera de %d livros\n", total_livros_a_cadastrar, total_livros_a_cadastrar + total_livros_cadastrados);
         printf("Tente cadastrar ate %d livros\n", MAX_LIVROS - total_livros_cadastrados);
         return;
@@ -70,10 +68,10 @@ void cadastrar_livro(char nome_arquivo_livros[], livro lista_livros[], int total
         printf("Autor: ");
         scanf(" %49[^\n]", lista_livros[i].autor);
 
-        printf("Ano: ");
+        printf("Ano de lancamento: ");
         scanf("%d", &lista_livros[i].ano);
 
-        printf("Exemplares: ");
+        printf("Total de exemplares: ");
         scanf("%d", &lista_livros[i].exemplares);
 
         fprintf(arquivo_livro, "%d;%s;%s;%d;%d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
@@ -98,12 +96,20 @@ int verificar_livro_existente(char titulo_livro_digitado[], livro lista_livros[]
 }
 
 void listar_livros(livro lista_livros[], int total_livros_cadastrados) {
+    if (total_livros_cadastrados == 0) {
+        printf("Nao tem nenhum livro cadastrado ainda!\n");
+        return;
+    }
     for (int i = 0; i < total_livros_cadastrados; i++) {
         printf("%d; %s; %s; %d; %d\n", lista_livros[i].codigo, lista_livros[i].titulo, lista_livros[i].autor, lista_livros[i].ano, lista_livros[i].exemplares);
     }
 }
 
 void buscar_livro(livro lista_livros[], int total_livros_cadastrados) {
+    if (total_livros_cadastrados == 0) {
+        printf("Nao tem nenhum livro cadastrado ainda!\n");
+        return;
+    }
     int forma_de_busca_escolhida;
     int codigo_busca;
     int ano_busca;
@@ -181,6 +187,10 @@ void buscar_livro_ano(livro lista_livros[], int ano_busca, int total_livros_cada
 }
 
 void editar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados) {
+    if (total_livros_cadastrados == 0) {
+        printf("Nao tem nenhum livro cadastrado ainda!\n");
+        return;
+    }
     char titulo_livro_para_editar[50];
     int opc_escolhida;
     char titulo_edicao[50];
@@ -203,7 +213,7 @@ void editar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_li
         }
     }
     if (livro_encontrado_para_editar == 1) {
-        printf("===== EDITAR LIVRO '%s' =====\n", lista_livros[identificador_livro].titulo);
+        printf("===== EDITAR O LIVRO '%s' =====\n", lista_livros[identificador_livro].titulo);
         printf("1. Editar titulo\n");
         printf("2. Editar autor\n");
         printf("3. Editar ano\n");
@@ -219,25 +229,25 @@ void editar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_li
     if ((opc_escolhida >= 1) && (opc_escolhida <= 4)) {
         switch(opc_escolhida) {
             case 1:
-            printf("Titulo (Modificar): ");
+            printf("Novo titulo: ");
             scanf(" %49[^\n]", titulo_edicao);
             strcpy(lista_livros[identificador_livro].titulo, titulo_edicao);
             break;
 
             case 2:
-            printf("Autor (Modificar): ");
+            printf("Novo autor: ");
             scanf(" %49[^\n]", autor_edicao);
             strcpy(lista_livros[identificador_livro].autor, autor_edicao);
             break;
 
             case 3:
-            printf("Ano (Modificar): ");
+            printf("Novo ano: ");
             scanf("%d", &ano_edicao);
             lista_livros[identificador_livro].ano = ano_edicao;
             break;
 
             case 4:
-            printf("Exemplares (Modificar): ");
+            printf("Novo numero de exemplares: ");
             scanf("%d", &exemplares_edicao);
             lista_livros[identificador_livro].exemplares = exemplares_edicao;
             break;
@@ -255,6 +265,10 @@ void editar_livro(char nome_arquivo_livros[], livro lista_livros[], int total_li
 }
 
 void excluir_livro(char nome_arquivo_livros[], livro lista_livros[], int total_livros_cadastrados) {
+    if (total_livros_cadastrados == 0) {
+        printf("Nao tem nenhum livro cadastrado ainda!\n");
+        return;
+    }
     FILE *arquivo_livro;
     FILE *arquivo_livro_temp;
     char nome_arquivo_livros_temp[30] = "livrostemp.txt";
