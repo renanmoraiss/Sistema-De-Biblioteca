@@ -267,7 +267,7 @@ void excluir_livro(char nome_arquivo_livros[], livro lista_livros[], int total_l
     }
     printf("Qual o titulo do livro que deseja excluir: ");
     scanf(" %49[^\n]", titulo_livro_exclusao);
-    for (int i = 0; i < total_livros_cadastrados; i++) {
+    for (int i = 0; i < total_livros_cadastrados && livro_encontrado != 1; i++) {
         if (strcmp(titulo_livro_exclusao, lista_livros[i].titulo) == 0) {
             indice_livro_excluir = i;
             livro_encontrado = 1;

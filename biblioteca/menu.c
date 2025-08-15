@@ -8,19 +8,19 @@ int menu() {
     printf("3. Buscar livro\n");
     printf("4. Editar livro\n");
     printf("5. Excluir livro\n");
-    printf("6. Encerrar\n");
+    printf("6. Encerrar sistema\n");
     printf("-----\n");
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao_escolhida);
     if (opcao_escolhida >= 1 && opcao_escolhida <= 6) {
         return opcao_escolhida;
     } else {
-        printf("Opcao escolhida nao existe\n");
+        printf("A opcao '%d' nao existe!\n", opcao_escolhida);
         return -1;
     }
 }
 
 void encerrar_sistema() {
-    printf("Sistema encerrado\n");
+    printf("Sistema encerrado!\n");
     return;
 }
